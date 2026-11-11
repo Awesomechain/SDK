@@ -1,0 +1,38 @@
+{
+  "name": "@awesomechain/sdk",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for Awesome (牛逼): API client, transaction builders, ABIs and addresses for every chain",
+  "license": "MIT",
+  "author": "Niubi",
+  "homepage": "https://xn--nib-9na0w.xyz",
+  "repository": { "type": "git", "url": "git+https://github.com/Awesomechain/SDK.git" },
+  "bugs": { "url": "https://github.com/Awesomechain/SDK/issues" },
+  "keywords": ["awesome", "niubi", "牛逼", "launchpad", "bnb-chain", "uniswap-v4", "pancakeswap", "solana", "viem"],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./abis": { "types": "./dist/abis.d.ts", "import": "./dist/abis.js" },
+    "./chains": { "types": "./dist/chains.d.ts", "import": "./dist/chains.js" },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "src", "README.md", "README.zh-CN.md", "LICENSE"],
+  "sideEffects": false,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:live": "AWESOME_LIVE=1 vitest run test/live.test.ts",
+    "abis": "node scripts/abis.mjs ../Contracts"
+  },
+  "peerDependencies": { "viem": "^2.21.0" },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.9.3",
+    "viem": "^2.57.0",
+    "vitest": "^3.2.4"
+  }
+}
